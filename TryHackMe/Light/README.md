@@ -127,7 +127,7 @@ This helped me understand the database schema before proceeding with data extrac
 
 ## 5. Extracting User Credentials
 
-After identifying the database tables and their columns, I proceeded to retrieve the stored usernames and passwords from `usertable`.
+After identifying the database tables and their columns, I proceeded to retrieve the stored usernames and passwords from `usertable` and `admintable`.
 
 **Payload:**
 
@@ -144,6 +144,8 @@ After identifying the database tables and their columns, I proceeded to retrieve
 - `group_concat()` combines multiple records into one output.
 
 The application returned multiple username-password pairs, confirming that I could retrieve records from the user table.
+
+![Table Contents](table-contents.png)
 
 ---
 
@@ -164,6 +166,9 @@ This returned the administrator record along with the flag.
 ```text
 THM{SQLit3_InJ3cti0n_is_Simple_n0?}
 ```
+
+![Table Contents](table-contents.png)
+
 
 ---
 
@@ -201,15 +206,8 @@ I gained practical experience with SQLite metadata, the `sqlite_master` table, `
 
 This challenge strengthened my understanding of SQL injection and database enumeration techniques.
 
----
 
-## References
 
-- [TryHackMe - Light](https://tryhackme.com/room/light)
-- [OWASP - SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection)
-- [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
-
----
 
 *Platform: TryHackMe | Room: Light | Category: SQL Injection*
 
