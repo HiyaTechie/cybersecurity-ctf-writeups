@@ -1,5 +1,4 @@
-
-# TryHackMe - Light | CTF Writeup
+# TryHackMe - Light
 
 ## 📌 Room Information
 
