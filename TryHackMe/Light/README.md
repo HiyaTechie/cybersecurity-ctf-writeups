@@ -125,9 +125,14 @@ This helped me understand the database schema before proceeding with data extrac
 
 ---
 
-## 5. Extracting User Credentials
 
-After identifying the database tables and their columns, I proceeded to retrieve the stored usernames and passwords from `usertable` and `admintable`.
+## 5. Extracting Credentials and Retrieving the Flag
+
+After identifying the database tables and their columns, I proceeded to extract the stored usernames and passwords from both `usertable` and `admintable`.
+
+### Step 1 - Extracting User Credentials
+
+I first queried the `usertable` to retrieve the stored user credentials.
 
 **Payload:**
 
@@ -141,17 +146,15 @@ After identifying the database tables and their columns, I proceeded to retrieve
 - `password` retrieves the password column.
 - `||` concatenates the two values.
 - `':'` separates the username and password.
-- `group_concat()` combines multiple records into one output.
+- `group_concat()` combines multiple records into a single output.
 
 The application returned multiple username-password pairs, confirming that I could retrieve records from the user table.
 
-![Table Contents](table-contents.png)
+![Extracted User Credentials](table-contents.png)
 
----
+### Step 2 - Retrieving the Flag
 
-## 6. Retrieving the Flag
-
-After extracting the regular user credentials, I investigated the second table discovered during enumeration: `admintable`.
+After extracting the regular user credentials, I queried the `admintable` to retrieve the administrator credentials.
 
 **Payload:**
 
@@ -159,18 +162,18 @@ After extracting the regular user credentials, I investigated the second table d
 ' UNION SELECT group_concat(username||':'||password) FROM admintable'
 ```
 
-This returned the administrator record along with the flag.
+The query returned the administrator record along with the flag.
 
 **Flag:**
 
 ```text
-THM{SQLit3_InJ3cti0n_is_Simple_n0?}
+THM{SQLit3_InJ3Cti0n_is_Simple_n0?}
 ```
 
-![Table Contents](table-contents.png)
-
+![Admin Credentials and Flag](table-contents.png)
 
 ---
+
 
 ## 7. Key Takeaways
 
